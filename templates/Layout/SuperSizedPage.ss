@@ -45,7 +45,11 @@
                                     random : $Random,
                                     slideshow : $Slideshow,
                                     slide_interval : $SlideInterval,
-                                    slide_links : '$SlideLinks',
+                                    <% if SlideLinks = 0 %>
+                                        slide_links : 0,
+                                    <% else %>
+                                        slide_links : '$SlideLinks',
+                                    <% end_if %>
                                     start_slide : $StartSlide,
                                     stop_loop : $StopLoop,
                                     thumb_links : $ThumbLinks,
