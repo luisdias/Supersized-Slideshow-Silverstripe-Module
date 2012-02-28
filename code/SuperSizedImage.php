@@ -27,7 +27,6 @@ class SuperSizedImage extends Page {
     static $default_parent = "SuperSizedPage";
     
     static $db = array(
-        'Title' => 'Varchar',
         'Url' => 'Text'
     );
     
@@ -39,15 +38,10 @@ class SuperSizedImage extends Page {
     public function getCMSFields() {
         $fields = parent::getCMSFields();
         
-        $fields->addFieldToTab('Root.Content.Main', new TextField('Title','Title'),'Content');
         $fields->addFieldToTab('Root.Content.Main', new TextField('Url','URL'),'Content');
         $fields->addFieldToTab('Root.Content.Image', new ImageField('Image','Image'));
         $fields->addFieldToTab('Root.Content.Image', new ImageField('Thumb','Thumb'));        
         return $fields;
-    }
-    
-    public function getBaseUrl() {
-        return 'http://' . $_SERVER['SERVER_NAME'];
     }
         
 }
