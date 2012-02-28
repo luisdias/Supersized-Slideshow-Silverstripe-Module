@@ -14,7 +14,7 @@
 	-->
 
 	<head>
-
+                <% base_tag %>
 		<title>Supersized - Full Screen Background Slideshow jQuery Plugin</title>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" href="{$BaseHref}supersized/css/supersized.css" type="text/css" media="screen" />
@@ -60,9 +60,9 @@
                                     slides : [			// Slideshow Images
                                     <% control Children %>
                                         <% if Last %>
-                                            {image : '$getBaseUrl$image.URL', title : '$title', thumb : '$getBaseUrl$thumb.URL'}
+                                            {image : '$image.URL', title : '$title', thumb : '$thumb.URL'}
                                         <% else %>
-                                            {image : '$getBaseUrl$image.URL', title : '$title', thumb : '$getBaseUrl$thumb.URL'},
+                                            {image : '$image.URL', title : '$title', thumb : '$thumb.URL'},
                                         <% end_if %>
                                     <% end_control %>
                                     ]
