@@ -12,7 +12,6 @@
 */
 
 (function($){
-	
 	theme = {
 	 	
 	 	
@@ -299,7 +298,7 @@
 		progress_delay		:	false,				// Delay after resize before resuming slideshow
 		thumb_page 			: 	false,				// Thumbnail page
 		thumb_interval 		: 	false,				// Thumbnail interval
-		image_path			:	'../supersized/images/',				// Default image path
+		image_path			:	location.protocol + '//' + location.host + '/supersized/images/',				// Default image path
 													
 		// General Elements							
 		play_button			:	'#pauseplay',		// Play/Pause button
