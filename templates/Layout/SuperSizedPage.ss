@@ -112,9 +112,10 @@
 			<!--Slide captions displayed here-->
 			<div id="slidecaption"></div>
 			
-			<!--Thumb Tray button-->
-			<a id="tray-button"><img id="tray-arrow" src="{$BaseHref}supersized/images/button-tray-up.png"/></a>
-			
+                        <% if ThumbLinks = 1 %>
+                            <!--Thumb Tray button-->
+                            <a id="tray-button"><img id="tray-arrow" src="{$BaseHref}supersized/images/button-tray-up.png"/></a>
+			<% end_if %>
 			<!--Navigation-->
 			<ul id="slide-list"></ul>
 			
