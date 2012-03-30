@@ -135,7 +135,7 @@
 	</div>
         <% if SlideLinks = "codrops" %>
             <div id="thumbnailSlider">
-                <ul class="ts_container">
+                <ul class="ts_container" style="width :{$calcThumbNailWidth}px;">
                     <% control Children %>
                     <li class="slide-link-0"><a>$title</a></li>
                     <% end_control %>
