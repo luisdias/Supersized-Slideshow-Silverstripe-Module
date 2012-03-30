@@ -100,7 +100,8 @@ class SuperSizedPage extends Page {
             0 => 'Disable',
             'num' => 'Numbers',
             'name' => 'Title',
-            'blank' => 'Links'
+            'blank' => 'Links',
+            'codrops' => 'Codrops'
         );
         $fields = parent::getCMSFields();
         $fields->addFieldsToTab('Root.Content.Options',
