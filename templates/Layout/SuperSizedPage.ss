@@ -19,11 +19,13 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" href="{$BaseHref}supersized/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="{$BaseHref}supersized/css/supersized.shutter.css" type="text/css" media="screen" />
+                <link rel="stylesheet" href="{$BaseHref}supersized/css/thumbnail_slider.css" type="text/css" media="screen" />
 		
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="{$BaseHref}supersized/javascript/jquery.easing.min.js"></script>
 		<script type="text/javascript" src="{$BaseHref}supersized/javascript/supersized.3.2.7.js"></script>
 		<script type="text/javascript" src="{$BaseHref}supersized/javascript/supersized.shutter.js"></script>
+                <script type="text/javascript" src="{$BaseHref}supersized/javascript/thumbnailSlider.js"></script>
 		<script type="text/javascript">
 			
 			jQuery(function($){
@@ -69,13 +71,22 @@
                             });
 		    });
 		</script>
-		
+		<script type="text/javascript">
+			$(function() {
+                            $('#thumbnailSlider').thumbnailSlider({
+                                    thumb_width	: 200,
+                                    thumb_height: 129,
+                                    easing : 'easeOutExpo',//easeInBack
+                                    speed : 600
+                            });
+			});
+                </script>		
 	</head>
 	
 	<style type="text/css">
-		ul#demo-block{ margin:0 15px 15px 15px; }
-			ul#demo-block li{ margin:0 0 10px 0; padding:10px; display:inline; float:left; clear:both; color:#aaa; background:url('{$BaseHref}supersized/images/bg-black.png'); font:11px Helvetica, Arial, sans-serif; }
-			ul#demo-block li a{ color:#eee; font-weight:bold; }
+            ul#demo-block{ margin:0 15px 15px 15px; }
+            ul#demo-block li{ margin:0 0 10px 0; padding:10px; display:inline; float:left; clear:both; color:#aaa; background:url('{$BaseHref}supersized/images/bg-black.png'); font:11px Helvetica, Arial, sans-serif; }
+            ul#demo-block li a{ color:#eee; font-weight:bold; }
 	</style>
 
 <body>
@@ -117,10 +128,29 @@
                             <a id="tray-button"><img id="tray-arrow" src="{$BaseHref}supersized/images/button-tray-up.png"/></a>
 			<% end_if %>
 			<!--Navigation-->
-			<ul id="slide-list"></ul>
-			
+                        <% if SlideLinks != "codrops" %>
+                            <ul id="slide-list"></ul>
+                        <% end_if %>
 		</div>
 	</div>
-
+        <% if SlideLinks = "codrops" %>
+            <div id="thumbnailSlider">
+                <ul class="ts_container">
+                    <% control Children %>
+                    <li class="slide-link-0"><a>$title</a></li>
+                    <% end_control %>
+                    <li class="ts_thumbnails"> <!-- animate to slide frame -->
+                        <div class="ts_preview_wrapper">
+                            <ul class="ts_preview"><!-- animate left to slide to the right thumb -->
+                            <% control Children %>
+                                <li><img src="$thumb.URL" alt="$title" /></li>
+                            <% end_control %>
+                            </ul>
+                        </div>
+                        <span></span>
+                    </li>
+                </ul>
+            </div>
+        <% end_if %>
 </body>
 </html>
