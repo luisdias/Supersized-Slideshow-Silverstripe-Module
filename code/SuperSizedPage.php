@@ -136,5 +136,9 @@ class SuperSizedPage extends Page {
 }
 
 class SuperSizedPage_Controller extends Page_Controller {
-    
+
+    public function calcThumbNailWidth() {
+        $children = $this->Children(); 
+        return $children->Count() * 17; 
+    }
 }
