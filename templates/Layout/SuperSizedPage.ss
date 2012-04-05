@@ -71,16 +71,21 @@
                             });
 		    });
 		</script>
-		<script type="text/javascript">
-			$(function() {
-                            $('#thumbnailSlider').thumbnailSlider({
-                                    thumb_width	: 200,
-                                    thumb_height: 129,
-                                    easing : 'easeOutExpo',//easeInBack
-                                    speed : 600
+                <% if SlideLinks = "codrops" %>
+                    <script type="text/javascript">
+                            $(function() {
+                                $('#thumbnailSlider').thumbnailSlider({
+                                    speed	: $CodropsSpeed,
+                                    easing	: '$CodropsEasing',
+                                    thumb_width	: $CodropsThumbWidth,
+                                    thumb_height: $CodropsThumbHeight,
+                                    zoom        : $CodropsZoom,
+                                    zoomratio	: $CodropsZoomRatio,
+                                    zoomspeed	: $CodropsZoomSpeed
+                                });
                             });
-			});
-                </script>		
+                    </script>
+                <% end_if %>		
 	</head>
 	
 	<style type="text/css">

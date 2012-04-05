@@ -44,6 +44,13 @@ class SuperSizedPage extends Page {
         'Slideshow' => 'Boolean',
         'SlideInterval' => 'Int',
         'SlideLinks' => 'Varchar',
+        'CodropsSpeed' => 'Int',
+        'CodropsEasing' => 'Varchar',
+        'CodropsThumbWidth' => 'Int',
+        'CodropsThumbHeight' => 'Int',
+        'CodropsZoom' => 'Boolean',
+        'CodropsZoomRatio' => 'Float',
+        'CodropsZoomSpeed' => 'Int',
         'StartSlide' => 'Int',
         'StopLoop' => 'Boolean',
         'ThumbLinks' => 'Boolean',
@@ -69,6 +76,13 @@ class SuperSizedPage extends Page {
         $this->Slideshow = 1;
         $this->SlideInterval = 3000;
         $this->SlideLinks = 0;
+        $this->CodropsSpeed = 100;
+        $this->CodropsEasing = 'jswing';
+        $this->CodropsThumbWidth = 75;
+        $this->CodropsThumbHeight = 75;
+        $this->CodropsZoom = 0;
+        $this->CodropsZoomRatio = 1.3;
+        $this->CodropsZoomSpeed = 15000;
         $this->StopLoop = 0;
         $this->ThumbLinks = 0;
         $this->ThumbnailNavigation = 0;
@@ -103,6 +117,41 @@ class SuperSizedPage extends Page {
             'blank' => 'Links',
             'codrops' => 'Codrops'
         );
+        
+        $codropsEasingOptions = array(
+            'none' => 'None',
+            'jswing' => 'jswing',
+            'easeInQuad' => 'InQuad',
+            'easeOutQuad' => 'OutQuad',
+            'easeInOutQuad' => 'InOutQuad',
+            'easeInCubic' => 'InCubic',
+            'easeOutCubic' => 'OutCubic',
+            'easeInOutCubic' => 'InOutCubic',
+            'easeInQuart' => 'InQuart',
+            'easeOutQuart' => 'OutQuart',
+            'easeInOutQuart' => 'InOutQuart',
+            'easeInQuint' => 'InQuint',
+            'easeOutQuint' => 'OutQuint',
+            'easeInOutQuint' => 'InOutQuint',
+            'easeInSine' => 'InSine',
+            'easeOutSine' => 'OutSine',
+            'easeInOutSine' => 'InOutSine',
+            'easeInExpo' => 'InExpo',
+            'easeOutExpo' => 'OutExpo',
+            'easeInOutExpo' => 'InOutExpo',
+            'easeInCirc' => 'InCirc',
+            'easeOutCirc' => 'OutCirc',
+            'easeInOutCirc' => 'InOutCirc',
+            'easeInElastic' => 'InElastic',
+            'easeOutElastic' => 'OutElastic',
+            'easeInOutElastic' => 'InOutElastic',
+            'easeInBack' => 'InBack',
+            'easeOutBack' => 'OutBack',
+            'easeInOutBack' => 'InOutBack',
+            'easeInBounce' => 'InBounce',
+            'easeOutBounce' => 'OutBounce',
+            'easeInOutBounce' => 'InOutBounce'
+        );
         $fields = parent::getCMSFields();
         $fields->addFieldsToTab('Root.Content.Options',
                 array (
@@ -122,6 +171,15 @@ class SuperSizedPage extends Page {
                     new CheckboxField('Slideshow','Slideshow'),
                     new NumericField('SlideInterval','Slide Interval'),
                     new DropdownField('SlideLinks','Slide Links',$slideItems),
+                    
+                    new NumericField('CodropsSpeed','Codrops Speed'),
+                    new DropdownField('CodropsEasing','Codrops Easing',$codropsEasingOptions),
+                    new NumericField('CodropsThumbWidth','Codrops Thumb Width'),
+                    new NumericField('CodropsThumbHeight','Codrops Thumb Height'),
+                    new CheckboxField('CodropsZoom','Codrops Zoom'),
+                    new NumericField('CodropsZoomRatio','Codrops Zoom Ratio'),
+                    new NumericField('CodropsZoomSpeed','Codrops Zoom Speed'),
+
                     new NumericField('StartSlide','Start Slide'),
                     new CheckboxField('StopLoop','Stop Loop'),
                     new CheckboxField('ThumbLinks','Thumb Links'),
