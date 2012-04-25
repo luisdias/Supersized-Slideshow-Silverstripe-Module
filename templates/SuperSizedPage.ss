@@ -15,7 +15,7 @@
 
 	<head>
                 <% base_tag %>
-		<title>Supersized - Full Screen Background Slideshow jQuery Plugin</title>
+		<title>$Title</title>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" href="{$BaseHref}supersized/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="{$BaseHref}supersized/css/supersized.shutter.css" type="text/css" media="screen" />
