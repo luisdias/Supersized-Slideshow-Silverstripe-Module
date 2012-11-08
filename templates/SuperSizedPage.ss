@@ -1,5 +1,4 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 	<!--
@@ -60,13 +59,15 @@
                                     transition_speed : $TransitionSpeed,
                                     vertical_center : $VerticalCenter,
                                     slides : [			// Slideshow Images
-                                    <% control Children %>
-                                        <% if Last %>
-                                            {image : '$image.URL', title : '$title', thumb : '$thumb.URL'}
-                                        <% else %>
-                                            {image : '$image.URL', title : '$title', thumb : '$thumb.URL'},
-                                        <% end_if %>
-                                    <% end_control %>
+                                    <% if getImages %> 
+                                        <% loop getImages %>
+                                            <% if Last %>
+                                                {image : '$URL', title : '$title', thumb : '$URL'}
+                                            <% else %>
+                                                {image : '$URL', title : '$title', thumb : '$URL'},
+                                            <% end_if %>                                            
+                                        <% end_loop %>                                           
+                                    <% end_if %>
                                     ]
                             });
                             
@@ -143,16 +144,20 @@
 	</div>
         <% if SlideLinks = "codrops" %>
             <div id="thumbnailSlider">
-                <ul class="ts_container" style="width :{$calcThumbNailWidth}px;">
-                    <% control Children %>
-                    <li class="slide-link-0"><a>$title</a></li>
-                    <% end_control %>
+                <ul class="ts_container" style="width:{$calcThumbNailWidth}px;">
+                    <% if getImages %> 
+                        <% loop getImages %>
+                            <li class="slide-link-0"><a>$title</a></li>                                            
+                        <% end_loop %>
+                    <% end_if %>
                     <li class="ts_thumbnails"> <!-- animate to slide frame -->
                         <div class="ts_preview_wrapper">
                             <ul class="ts_preview"><!-- animate left to slide to the right thumb -->
-                            <% control Children %>
-                                <li><img src="$thumb.URL" alt="$title" /></li>
-                            <% end_control %>
+                            <% if getImages %> 
+                                <% loop getImages %>
+                                    <li><img src="$URL" alt="$title" width="{$Top.CodropsThumbWidth}" height="{$Top.CodropsThumbHeight}" /></li>
+                                <% end_loop %>
+                            <% end_if %>
                             </ul>
                         </div>
                         <span></span>
