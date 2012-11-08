@@ -1,0 +1,59 @@
+div#supersized-thumbs {
+    width: 100%;
+    overflow: hidden;
+    padding: 0 0 4px 0;
+    margin:0 auto;
+}
+ ul.supersized-thumbs {
+    margin:0 auto;
+    padding:0px;
+}
+ ul.supersized-thumbs li {
+    float:left;
+    margin: 0 50px 40px 0;
+    overflow: hidden;
+    padding:3px;
+    vertical-align:top;
+    border:1px solid #333333;
+}
+ ul.supersized-thumbs li.last { margin-right:0px }
+ ul.supersized-thumbs li img { border: none; }
+ a.supersized-thumb { 
+    display:block;
+    position: relative;
+    -webkit-box-shadow: 0 2px 15px 1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 2px 15px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 15px 1px rgba(0, 0, 0, 0.5);     
+ }
+ a.supersized-thumb img:hover { 
+     -webkit-filter: none; /*Returns to default state*/; 
+ }
+ 
+ a.supersized-thumb img {
+    display:block;      
+ }
+ 
+ /* From http://thecodeplayer.com/walkthrough/simple-hover-effects-with-css3-filters */
+ 
+.opacity {-webkit-filter: opacity(50%);}
+.saturate {-webkit-filter: saturate(3);}
+.grayscale {-webkit-filter: grayscale(100%);}
+.contrast {-webkit-filter: contrast(160%);}
+.brightness {-webkit-filter: brightness(0.25);}
+.blur {-webkit-filter: blur(3px);}
+.invert {-webkit-filter: invert(100%);}
+.sepia {-webkit-filter: sepia(100%);}
+.huerotate {-webkit-filter: hue-rotate(180deg);}
+
+
+.title {
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 15px;
+    z-index: 1;
+    padding: 5px 7px;
+    background: rgba(0, 0, 0, 0.6);
+}
