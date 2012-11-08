@@ -22,12 +22,16 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 class SuperSizedPage extends Page {
-    
-    static $allowed_children = array(
-        'SuperSizedImage'
+
+    static $has_one = array ( 
+        'Folder' => 'Folder',
+        'ThumbnailImage' => 'File'
     );
+    
+    static $allowed_children = 'none';
 
     static $db = array(
+        'FormatImageName' => 'Boolean',        
         'AutoPlay' => 'Boolean',
         'FitAlways' => 'Boolean',
         'FitLandscape' => 'Boolean',
@@ -62,6 +66,7 @@ class SuperSizedPage extends Page {
 
     public function populateDefaults() {
         parent::populateDefaults();
+        $this->FormatImageName = 1;
         $this->Autoplay = 1;
         $this->FitAlways = 0;
         $this->FitLandscape = 0;
@@ -92,6 +97,7 @@ class SuperSizedPage extends Page {
     }
 
     public function getCMSFields() {
+        $fields = parent::getCMSFields();        
         $transitionItems = array(
             0 => 'none',
             1 => 'fade',
@@ -152,51 +158,56 @@ class SuperSizedPage extends Page {
             'easeOutBounce' => 'OutBounce',
             'easeInOutBounce' => 'InOutBounce'
         );
-        $fields = parent::getCMSFields();
-        $fields->addFieldsToTab('Root.Content.Options',
-                array (
-                    new CheckboxField('AutoPlay','Auto Play'),
-                    new CheckboxField('FitAlways','Fit Always'),
-                    new CheckboxField('FitLandscape','Fit Landscape'),
-                    new CheckboxField('FitPortrait','Fit Portrait'),
-                    new CheckboxField('HorizontalCenter','Horizontal Center'),
-                    new CheckboxField('ImageProtect','Image Protect'),
-                    new CheckboxField('KeyboardNav','Keyboard Nav'),
-                    new NumericField('MinHeight','Min Height'),
-                    new NumericField('MinWidth','Min Width'),
-                    new CheckboxField('NewWindow','New window'),
-                    new CheckboxField('PauseHover','Pause Hover'),
-                    new DropdownField('Performance','Performance',$performanceItems),
-                    new CheckboxField('Random','Random'),
-                    new CheckboxField('Slideshow','Slideshow'),
-                    new NumericField('SlideInterval','Slide Interval'),
-                    new DropdownField('SlideLinks','Slide Links',$slideItems),
-                    
-                    new NumericField('CodropsSpeed','Codrops Speed'),
-                    new DropdownField('CodropsEasing','Codrops Easing',$codropsEasingOptions),
-                    new NumericField('CodropsThumbWidth','Codrops Thumb Width'),
-                    new NumericField('CodropsThumbHeight','Codrops Thumb Height'),
-                    new CheckboxField('CodropsZoom','Codrops Zoom'),
-                    new NumericField('CodropsZoomRatio','Codrops Zoom Ratio'),
-                    new NumericField('CodropsZoomSpeed','Codrops Zoom Speed'),
 
-                    new NumericField('StartSlide','Start Slide'),
-                    new CheckboxField('StopLoop','Stop Loop'),
-                    new CheckboxField('ThumbLinks','Thumb Links'),
-                    new CheckboxField('ThumbnailNavigation','Thumbnail Navigation'),
-                    new DropdownField('Transition','Transition',$transitionItems),
-                    new NumericField('TransitionSpeed','Transition Speed'),
-                    new CheckboxField('VerticalCenter','Vertical Center')
-                )
+        $fields->addFieldsToTab('Root.Options',
+            array (
+                new CheckboxField('AutoPlay','Auto Play'),
+                new CheckboxField('FitAlways','Fit Always'),
+                new CheckboxField('FitLandscape','Fit Landscape'),
+                new CheckboxField('FitPortrait','Fit Portrait'),
+                new CheckboxField('HorizontalCenter','Horizontal Center'),
+                new CheckboxField('ImageProtect','Image Protect'),
+                new CheckboxField('KeyboardNav','Keyboard Nav'),
+                new NumericField('MinHeight','Min Height'),
+                new NumericField('MinWidth','Min Width'),
+                new CheckboxField('NewWindow','New window'),
+                new CheckboxField('PauseHover','Pause Hover'),
+                new DropdownField('Performance','Performance',$performanceItems),
+                new CheckboxField('Random','Random'),
+                new CheckboxField('Slideshow','Slideshow'),
+                new NumericField('SlideInterval','Slide Interval'),
+                new DropdownField('SlideLinks','Slide Links',$slideItems),
+
+                new NumericField('CodropsSpeed','Codrops Speed'),
+                new DropdownField('CodropsEasing','Codrops Easing',$codropsEasingOptions),
+                new NumericField('CodropsThumbWidth','Codrops Thumb Width'),
+                new NumericField('CodropsThumbHeight','Codrops Thumb Height'),
+                new CheckboxField('CodropsZoom','Codrops Zoom'),
+                new NumericField('CodropsZoomRatio','Codrops Zoom Ratio'),
+                new NumericField('CodropsZoomSpeed','Codrops Zoom Speed'),
+
+                new NumericField('StartSlide','Start Slide'),
+                new CheckboxField('StopLoop','Stop Loop'),
+                new CheckboxField('ThumbLinks','Thumb Links'),
+                new CheckboxField('ThumbnailNavigation','Thumbnail Navigation'),
+                new DropdownField('Transition','Transition',$transitionItems),
+                new NumericField('TransitionSpeed','Transition Speed'),
+                new CheckboxField('VerticalCenter','Vertical Center')
+            )
         );
+        
+        $fields->addFieldToTab('Root.Main', 
+                new TreeDropdownField('FolderID', 'Select Image Folder', 'Folder'),
+                'Content');
+        
+        $fields->addFieldToTab('Root.Main', 
+                new TreeDropdownField('ThumbnailImageID', 'Select image for thumbnail gallery', 'File'),
+                'Content');
+        
+        $fields->addFieldToTab('Root.Main', 
+                new CheckboxField('FormatImageName','Format Image File Name (ex: 99-XXX-999.jpg becomes XXX 999)'),
+                'Content');        
+        
         return $fields;
-    }
-}
-
-class SuperSizedPage_Controller extends Page_Controller {
-
-    public function calcThumbNailWidth() {
-        $children = $this->Children(); 
-        return $children->Count() * 17; 
     }
 }
