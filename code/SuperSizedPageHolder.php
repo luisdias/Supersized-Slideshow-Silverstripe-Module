@@ -34,7 +34,7 @@ class SuperSizedPageHolder extends Page {
         parent::populateDefaults();
         $this->ThumbnailWidth = 250;
         $this->ThumbnailHeight = 130;
-        $this->ThumbnailEffect = '-webkit-filter: opacity(50%);';
+        $this->ThumbnailEffect = 'opacity';
     }
     
     public function getCMSFields() {
@@ -42,14 +42,14 @@ class SuperSizedPageHolder extends Page {
 
         $thumbnailEffects = array(
             '' => 'None',
-            '-webkit-filter: opacity(50%);' => 'Opacity',
-            '-webkit-filter: saturate(3);' => 'Saturate',
-            '-webkit-filter: grayscale(100%);' => 'Grayscale',
-            '-webkit-filter: contrast(160%);' => 'Contrast',
-            '-webkit-filter: blur(3px);' => 'Blur',
-            '-webkit-filter: invert(100%);' => 'Invert',
-            '-webkit-filter: sepia(100%);' => 'Sepia',
-            '-webkit-filter: hue-rotate(180deg);' => 'Huerotate',
+            'opacity' => 'Opacity',
+            'saturate' => 'Saturate',
+            'greyscale' => 'Grayscale',
+            'contrast' => 'Contrast',
+            'blur' => 'Blur',
+            'invert' => 'Invert',
+            'sepia' => 'Sepia',
+            'huerotate' => 'Huerotate',
         );        
         
         $fields->addFieldsToTab('Root.Main',array( 

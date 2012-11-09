@@ -26,6 +26,14 @@ class SuperSizedPageHolder_Controller extends Page_Controller {
     public function init() {
         parent::init();
         Requirements::css("supersized/css/style.css");
+        
+        Requirements::customScript('
+        jQuery(document).ready(function() {
+            $(\'ul.supersized-thumbs img\').addClass(\'' . $this->ThumbnailEffect . '\'); 
+            $(\'ul.supersized-thumbs li\').width(' . $this->ThumbnailWidth . ');
+            $(\'ul.supersized-thumbs li\').height(' . $this->ThumbnailHeight . ');
+        });
+        ');
     }
     
 }
