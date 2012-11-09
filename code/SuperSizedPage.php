@@ -210,4 +210,8 @@ class SuperSizedPage extends Page {
         
         return $fields;
     }
+    
+    public function getCMSValidator() { 
+        return new RequiredFields('Folder'); 
+    }     
 }
