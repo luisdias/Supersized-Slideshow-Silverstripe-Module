@@ -3,14 +3,14 @@
 **Changelog for version 0.3**  
 * No more SuperSizedImage children pages, upload your images to a folder and celebrate!
 * New SuperSizedPageHolder page type : index with thumbnails to multiple galleries  
-* Silverstripe 3.x module
+* Silverstripe 2.4.x module
 
 # Author contact  
 Luis E. S. Dias  
 smartbyte.systems@gmail.com
 
 # About  
-Silverstripe 3.x module to create a fullscreen background slideshow
+Silverstripe 2.4.x module to create a fullscreen background slideshow
 
 # Github repository  
 https://github.com/luisdias/Supersized-Slideshow-Silverstripe-Module
