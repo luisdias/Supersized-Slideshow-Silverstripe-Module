@@ -83,8 +83,8 @@ class SuperSizedPage extends Page {
         $this->SlideLinks = 0;
         $this->CodropsSpeed = 100;
         $this->CodropsEasing = 'jswing';
-        $this->CodropsThumbWidth = 75;
-        $this->CodropsThumbHeight = 75;
+        $this->CodropsThumbWidth = 250;
+        $this->CodropsThumbHeight = 130;
         $this->CodropsZoom = 0;
         $this->CodropsZoomRatio = 1.3;
         $this->CodropsZoomSpeed = 15000;
