@@ -159,7 +159,7 @@ class SuperSizedPage extends Page {
             'easeInOutBounce' => 'InOutBounce'
         );
 
-        $fields->addFieldsToTab('Root.Options',
+        $fields->addFieldsToTab('Root.Content.Options',
             array (
                 new CheckboxField('AutoPlay','Auto Play'),
                 new CheckboxField('FitAlways','Fit Always'),
@@ -196,15 +196,16 @@ class SuperSizedPage extends Page {
             )
         );
         
-        $fields->addFieldToTab('Root.Main', 
+      
+        $fields->addFieldToTab('Root.Content.Main', 
                 new TreeDropdownField('FolderID', 'Select Image Folder', 'Folder'),
                 'Content');
         
-        $fields->addFieldToTab('Root.Main', 
+        $fields->addFieldToTab('Root.Content.Main', 
                 new TreeDropdownField('ThumbnailImageID', 'Select image for thumbnail gallery', 'File'),
                 'Content');
         
-        $fields->addFieldToTab('Root.Main', 
+        $fields->addFieldToTab('Root.Content.Main', 
                 new CheckboxField('FormatImageName','Format Image File Name (ex: 99-XXX-999.jpg becomes XXX 999)'),
                 'Content');        
         

@@ -52,7 +52,7 @@
                                         slide_links : '$SlideLinks',
                                     <% end_if %>
                                     start_slide : $StartSlide,
-                                    stop_loop : $StopLoop,
+                                    stop_control : $StopLoop,
                                     thumb_links : $ThumbLinks,
                                     thumbnail_navigation : $ThumbnailNavigation,
                                     transition : $Transition,
@@ -60,13 +60,13 @@
                                     vertical_center : $VerticalCenter,
                                     slides : [			// Slideshow Images
                                     <% if getImages %> 
-                                        <% loop getImages %>
+                                        <% control getImages %>
                                             <% if Last %>
                                                 {image : '$URL', title : '$title', thumb : '$URL'}
                                             <% else %>
                                                 {image : '$URL', title : '$title', thumb : '$URL'},
                                             <% end_if %>                                            
-                                        <% end_loop %>                                           
+                                        <% end_control %>                                           
                                     <% end_if %>
                                     ]
                             });
@@ -146,17 +146,17 @@
             <div id="thumbnailSlider">
                 <ul class="ts_container" style="width:{$calcThumbNailWidth}px;">
                     <% if getImages %> 
-                        <% loop getImages %>
+                        <% control getImages %>
                             <li class="slide-link-0"><a>$title</a></li>                                            
-                        <% end_loop %>
+                        <% end_control %>
                     <% end_if %>
                     <li class="ts_thumbnails"> <!-- animate to slide frame -->
                         <div class="ts_preview_wrapper">
                             <ul class="ts_preview"><!-- animate left to slide to the right thumb -->
                             <% if getImages %> 
-                                <% loop getImages %>
+                                <% control getImages %>
                                     <li><img src="$URL" alt="$title" width="{$Top.CodropsThumbWidth}" height="{$Top.CodropsThumbHeight}" /></li>
-                                <% end_loop %>
+                                <% end_control %>
                             <% end_if %>
                             </ul>
                         </div>

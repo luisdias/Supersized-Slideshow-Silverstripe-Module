@@ -37,9 +37,9 @@ class SuperSizedPage_Controller extends Page_Controller {
         if ( $this->FolderID > 0 ) {
             $folderImages = DataObject::get("Image", "ParentID = '{$this->FolderID}'");
             
-            $images = ArrayList::create();
+            $images = new DataObjectSet('Image');
             
-            foreach ($folderImages as &$folderImage) {                
+            foreach ($folderImages as $folderImage) {                
                 $image = new Image();
                 if ( $this->FormatImageName ) {
                     $image->Title = $this->getFormatImageTitle($folderImage->Title);

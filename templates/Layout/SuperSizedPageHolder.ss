@@ -2,15 +2,13 @@
 $Content
 <div id="supersized-thumbs">
     <ul class="supersized-thumbs">
-        <% loop Children %>
+        <% control Children %>
             <li>                
                 <a href="$Link" class="supersized-thumb">
                     <span class="title">$Title</span>
-                    <% with ThumbnailImage %>
-                        $SetWidth(Top.ThumbnailWidth)
-                    <% end_with %>
+                    <img src="$ThumbnailImage.URL" width="$Top.ThumbnailWidth" height="$Top.ThumbnailHeight" />
                 </a>
             </li>        
-        <% end_loop %>
+        <% end_control %>
     </ul>
 </div>

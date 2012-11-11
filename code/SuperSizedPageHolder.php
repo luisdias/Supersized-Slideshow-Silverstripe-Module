@@ -52,12 +52,15 @@ class SuperSizedPageHolder extends Page {
             'huerotate' => 'Huerotate',
         );        
         
-        $fields->addFieldsToTab('Root.Main',array( 
-                new NumericField('ThumbnailWidth','Thumbnail Width'), 
-                new NumericField('ThumbnailHeight','Thumbnail Height'),
-                new DropdownField('ThumbnailEffect','Thumbnail Effect',$thumbnailEffects),
-                ),
-                'Content');
+        $fields->addFieldsToTab('Root.Content.Main',
+                new NumericField('ThumbnailWidth','Thumbnail Width'),'Content');
+        
+        $fields->addFieldsToTab('Root.Content.Main',
+                new NumericField('ThumbnailHeight','Thumbnail Height'),'Content');
+        
+        $fields->addFieldsToTab('Root.Content.Main',
+                new DropdownField('ThumbnailEffect','Thumbnail Effect',$thumbnailEffects),'Content');
+
         return $fields;
     }
 }
