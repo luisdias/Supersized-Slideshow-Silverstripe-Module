@@ -52,7 +52,7 @@
                                         slide_links : '$SlideLinks',
                                     <% end_if %>
                                     start_slide : $StartSlide,
-                                    stop_control : $StopLoop,
+                                    stop_loop : $StopLoop,
                                     thumb_links : $ThumbLinks,
                                     thumbnail_navigation : $ThumbnailNavigation,
                                     transition : $Transition,
