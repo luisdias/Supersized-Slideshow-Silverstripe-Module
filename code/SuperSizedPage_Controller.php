@@ -37,7 +37,7 @@ class SuperSizedPage_Controller extends Page_Controller {
         if ( $this->FolderID > 0 ) {
             $folderImages = DataObject::get("Image", "ParentID = '{$this->FolderID}'");
             
-            $images = new DataObjectSet('Image');
+            $images = new DataObjectSet();
             
             foreach ($folderImages as $folderImage) {                
                 $image = new Image();
